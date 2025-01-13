@@ -10,6 +10,7 @@ body {
 
 main {
   /* min-height: calc(100vh); */
+  padding: 1em;
 }
 
 button {
