@@ -1,0 +1,10 @@
+.welcome-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 2em;
+
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}

@@ -37,7 +37,7 @@ nav {
     transition: all 0.3s;
     padding: 0.5em;
 }
-.default-link:hover, .default-link:focus, .active-link {
+.default-link:hover, .default-link:focus, .active-link, .log-button:hover {
     background-color: rgb(0, 102, 153);
 }
 
@@ -55,4 +55,13 @@ nav ul{
     list-style: none;
 }
 
-
+.log-button {
+    background-color: rgb(0, 136, 190);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1em;
+    transition: all 0.3s;
+    padding: 0.5em;
+}

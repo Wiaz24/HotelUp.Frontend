@@ -1,19 +1,31 @@
 @font-face {
-  font-family: Monsterrat;
-  src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+    font-family: Monsterrat;
+    src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
 }
 
 body {
-  margin: 0;
-  font-family: Monsterrat;
+    margin: 0;
+    font-family: Monsterrat;
 }
 
 main {
-  /* min-height: calc(100vh); */
-  padding: 1em;
+    /* min-height: calc(100vh); */
+    padding: 1em;
 }
 
 button {
-  font-family: Monsterrat;
-  font-weight: bold;
+    font-family: Monsterrat;
+    background-color: rgb(0, 136, 190);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1em;
+    transition: all 0.3s;
+    padding: 0.5em;
+    /* font-weight: bold; */
+}
+
+button:hover {
+    background-color: rgb(0, 102, 153);
 }
