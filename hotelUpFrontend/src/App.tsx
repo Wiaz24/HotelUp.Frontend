@@ -5,6 +5,7 @@ import NavbarComponent from './shared/components/navbar/NavbarComponent'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import UserPage from './modules/customerModule/pages/UserPage'
 import OfferPage from './modules/customerModule/pages/OfferPage'
+import ReserveRoomPage from './modules/customerModule/pages/ReserveRoomPage'
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<InformationTablePage/>}/>
             <Route path="/account" element={<UserPage/>}/>
             <Route path="/offer" element={<OfferPage/>}/>
+            <Route path="/create-reservation" element={<ReserveRoomPage/>}/>
           </Routes>
         </main>
     </QueryClientProvider>    

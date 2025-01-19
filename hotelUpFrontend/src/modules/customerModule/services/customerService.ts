@@ -1,4 +1,4 @@
-import { Room } from "../models/types";
+import { Room } from "../models/roomTypes";
 
 
 export const getFreeRooms = async (startDate?: string, endDate?: string, roomType?: string, capacity?: number | null): Promise<Room[]> => {

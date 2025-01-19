@@ -1,8 +1,7 @@
 import './roomComponent.css';
 import hotelImage from "../../../assets/images/hotel.jpg";
-import { RoomProps } from '../../../modules/customerModule/models/types';
+import { RoomProps } from '../../../modules/customerModule/models/roomTypes';
 import RoomActionsComponent from './RoomActionsComponent';
-import { RoomStatus } from '../../models/roomStatus';
 
 
 function RoomComponent(props: RoomProps) {
@@ -21,7 +20,7 @@ function RoomComponent(props: RoomProps) {
         <div>Do: <span>{props.endDate}</span></div>
       </div>
     </div>
-    <RoomActionsComponent roomStatus={RoomStatus.AVAILABLE}></RoomActionsComponent>
+    <RoomActionsComponent {...props}></RoomActionsComponent>
   </div>);
 }
 
