@@ -1,0 +1,88 @@
+.offer-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.filters label {
+    text-wrap: wrap;
+}
+
+.filters label select, .filters label input, .filters label select::after, .filters label select option {
+    background-color: white;
+    border-color: rgb(0, 136, 190);
+    border-radius: 0;
+    border-style: solid;
+    cursor: pointer;
+    margin: 0.5em;
+    font-family: 'Monsterrat';
+    outline: none;
+    transition: all 0.3s;
+}
+
+.filters label select:hover, .filters label select::after, .filters label input:hover, .filters label input:focus{
+    border-color: rgb(0, 102, 153);
+}
+
+.free-rooms-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.room-box {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    gap: 1em;
+    width: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 1em;
+}
+
+.room-box div {
+    flex: 1;
+}
+
+.room-image {
+    max-width: 100%;
+}
+
+
+/* .filters label select::after, .filters label select option {
+    background-color: white;
+    border-color: rgb(0, 102, 153);
+    border-radius: 0;
+    border-style: solid;
+    cursor: pointer;
+    font-family: Montserrat;
+} */
+
+@media (max-width: 768px) {
+    .filters{
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .room-box {
+        width: 75%;
+    }
+}
