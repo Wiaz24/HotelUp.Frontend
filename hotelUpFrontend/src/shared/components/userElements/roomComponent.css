@@ -1,0 +1,70 @@
+.room-box {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 0.5em;
+    width: 35%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 1em;
+}
+
+.room-info {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+/* .room-box div {
+    flex: 1;
+} */
+
+.image-div {
+    flex: 0.6;
+}
+
+.room-image {
+    max-width: 100%;
+}
+
+.description {
+    justify-content: center;
+    display: flex;
+    flex: 0.4;
+    flex-direction: column;
+    /* justify-content: center; */
+    gap: 0.7em;
+}
+
+.description div {
+    display: flex;
+    gap: 0.5em;
+}
+
+.description div span{
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 1em;
+}
+
+@media (max-width: 768px) {
+    .room-box {
+        width: 85%;
+    }
+
+    .room-box div {
+        flex: 1;
+    }
+
+    .description {
+        gap: 0.5em;
+    }
+
+}

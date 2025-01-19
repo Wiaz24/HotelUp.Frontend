@@ -6,6 +6,9 @@ import { useEffect } from "react";
 function UserPage() {
   const auth = useAuth();
   const navigate = useNavigate();
+  const userGroups: string[] = Array.isArray(auth.user?.profile['cognito:groups']) 
+  ? auth.user?.profile['cognito:groups'] 
+  : [];
   
   const signOutRedirect = () => {
     auth.removeUser();
@@ -16,7 +19,6 @@ function UserPage() {
     if (!auth.isAuthenticated) {
       navigate('/');
     }
-    const userGroups = auth.user?.profile['cognito:groups'];
     console.log(userGroups);
   }, [auth.isAuthenticated, navigate]);
 

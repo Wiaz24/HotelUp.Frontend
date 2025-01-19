@@ -47,35 +47,6 @@
     width: 100%;
 }
 
-.room-box {
-    display: flex;
-    flex-direction: row;
-    padding: 1em;
-    gap: 1em;
-    width: 50%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-    border-radius: 0;
-    padding: 1em;
-}
-
-.room-box div {
-    flex: 1;
-}
-
-.room-image {
-    max-width: 100%;
-}
-
-
-/* .filters label select::after, .filters label select option {
-    background-color: white;
-    border-color: rgb(0, 102, 153);
-    border-radius: 0;
-    border-style: solid;
-    cursor: pointer;
-    font-family: Montserrat;
-} */
-
 @media (max-width: 768px) {
     .filters{
       flex-direction: column;

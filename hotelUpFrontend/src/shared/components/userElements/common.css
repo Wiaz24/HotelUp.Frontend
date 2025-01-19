@@ -1,0 +1,25 @@
+.common-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.elements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    width: 90%;
+}
+
+.single-element {
+    padding: 1em;
+    width: 90%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    border-radius: 0.1em;
+    padding: 1em;
+}
