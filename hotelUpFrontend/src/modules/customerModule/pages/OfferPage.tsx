@@ -3,7 +3,7 @@ import { useState } from "react";
 import './offerPage.css'
 import { RoomType } from "../../../shared/models/roomTypes";
 
-import RoomComponent from "../../../shared/components/userElements/RoomComponent";
+import RoomComponent from "../../../shared/components/room/RoomComponent";
 import { useQuery } from "@tanstack/react-query";
 import { getFreeRooms } from "../services/customerService";
 import { RoomStatus } from "../../../shared/models/roomStatus";

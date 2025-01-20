@@ -1,3 +1,5 @@
+import { APIResponse } from "../../../shared/models/apiTypes";
+import { ReservationData } from "../models/reservationTypes";
 import { Room } from "../models/roomTypes";
 
 
@@ -22,4 +24,23 @@ export const getFreeRooms = async (startDate?: string, endDate?: string, roomTyp
   const rooms = await response.json();
   console.log(rooms);
   return rooms;
+};
+
+export const createReservation = async ({ roomNumbers, tenantsData, startDate, endDate, token }: ReservationData): Promise<APIResponse> => {
+  const response = await fetch('http://localhost:5000/api/customer/commands/create-reservation', {
+    method: 'POST',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify( { roomNumbers, tenantsData, startDate, endDate, token } ),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || 'Wystąpił błąd podczas wysyłania danych');
+  }
+
+  return response.json();
 };

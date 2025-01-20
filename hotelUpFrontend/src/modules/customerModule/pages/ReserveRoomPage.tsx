@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TenantFormComponent from "../components/TenantFormComponent";
 import { useEffect, useState } from "react";
-import RoomComponent from "../../../shared/components/userElements/RoomComponent";
+import RoomComponent from "../../../shared/components/room/RoomComponent";
 import { RoomProps } from "../models/roomTypes";
 import { RoomStatus } from "../../../shared/models/roomStatus";
 
@@ -9,6 +9,7 @@ import './reserveRoomPage.css';
 
 function ReserveRoomPage(){
   const location = useLocation();
+  const navigate = useNavigate();
   const [roomProps, setRoomProps] = useState<RoomProps | null>(null);
 
   useEffect(() => {
@@ -16,24 +17,21 @@ function ReserveRoomPage(){
     if (initialRoomProps) {
       initialRoomProps.roomStatus = RoomStatus.PENDING_RESERVATION;
       setRoomProps(initialRoomProps);
+      console.log(initialRoomProps);
+    }
+    else {
+      navigate('/');
     }
   }, [location]);
   
-  useEffect(() => {
-    if (roomProps) {
-      console.log(roomProps);
-    }
-  })
 
-  if (!roomProps) {
-    return <div>Loading...</div>;
+  if (roomProps) {
+    return (<div className="reservation-component">
+      <RoomComponent {...roomProps}></RoomComponent>
+      <h3>Dane właściciela rezerwacji:</h3>
+      <TenantFormComponent {...roomProps}></TenantFormComponent>
+    </div>);
   }
-
-  return (<div className="reservation-component">
-    <RoomComponent {...roomProps}></RoomComponent>
-    <h3>Dane właściciela rezerwacji:</h3>
-    <TenantFormComponent></TenantFormComponent>
-  </div>);
 }
 
 export default ReserveRoomPage;

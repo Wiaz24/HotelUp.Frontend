@@ -15,7 +15,7 @@ function RoomComponent(props: RoomProps) {
       <div className="description">
         <div>Typ: <span>{props.room.type}</span> </div>
         <div>Dla ilu osób? <span>{props.room.capacity}</span></div>
-        <div>Piętro: <span>{props.room.floor}</span></div>
+        {/* <div>Piętro: <span>{props.room.floor}</span></div> */}
         <div>Od: <span>{props.startDate}</span></div>
         <div>Do: <span>{props.endDate}</span></div>
       </div>
