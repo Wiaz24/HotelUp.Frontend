@@ -10,16 +10,15 @@ function RoomActionsComponent(props: RoomProps) {
     navigate('/create-reservation', {state: {props}})
   };
 
-  return (<div className="actions">
+  return (<>
     {props.roomStatus === RoomStatus.AVAILABLE ? (<div className="actions">
       <button onClick={handleCreatingReservation}>Rezerwuj pokój</button>
     </div>) : 
     props.roomStatus === RoomStatus.RESERVED ? (<div className="actions">
-      <button>Zamów sprzątanie</button>
-      <button>Anuluj rezerwację</button>    
+      <button>Szczegóły rezerwacji</button>
     </div>
     ) : null}
-  </div>);
+  </>);
 }
 
 export default RoomActionsComponent;

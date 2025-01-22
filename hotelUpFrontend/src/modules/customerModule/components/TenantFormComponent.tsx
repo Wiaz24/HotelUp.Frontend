@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DocumentType } from "../models/documentTypes";
 
 import './tenantFormComponent.css'
@@ -25,6 +25,9 @@ function TenantFormComponent (props: RoomProps) {
   const { mutate, isError, error, isSuccess } = useMutation({
     mutationKey: ['create-reservation'],
     mutationFn: createReservation,
+    onSuccess: () => {
+      navigate('/account');
+    },
   });
   
 
@@ -32,10 +35,10 @@ function TenantFormComponent (props: RoomProps) {
     return <span>Error: {error?.message}</span>;
   }
 
-  if (isSuccess) {
-    navigate('/account');
-    return <span>Utworzono rezerwację!</span>;
-  }
+  // if (isSuccess) {
+  //   navigate('/account');
+  //   return null;
+  // }
 
 
   const handleSubmit = async (e: React.FormEvent) => {

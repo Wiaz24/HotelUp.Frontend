@@ -1,5 +1,5 @@
 import { APIResponse } from "../../../shared/models/apiTypes";
-import { ReservationData } from "../models/reservationTypes";
+import { CreatedReservationData, ReservationData } from "../models/reservationTypes";
 import { Room } from "../models/roomTypes";
 
 
@@ -43,4 +43,24 @@ export const createReservation = async ({ roomNumbers, tenantsData, startDate, e
   }
 
   return response.json();
+};
+
+export const getUsersReservations = async (token: string): Promise<CreatedReservationData[]> => {
+  console.log('here');
+  let url = 'http://localhost:5000/api/customer/queries/get-users-reservations';
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const reservations = await response.json();
+  console.log(reservations);
+  return reservations;
 };
