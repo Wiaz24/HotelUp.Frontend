@@ -7,7 +7,11 @@ function RoomActionsComponent(props: RoomProps) {
   const navigate = useNavigate();
 
   const handleCreatingReservation = () => {
-    navigate('/create-reservation', {state: {props}})
+    navigate('/create-reservation', {state: {props}});
+  };
+
+  const handleViewDetails = () => {
+    navigate(`/reservation-details/${props.reservationId}`);
   };
 
   return (<>
@@ -15,7 +19,7 @@ function RoomActionsComponent(props: RoomProps) {
       <button onClick={handleCreatingReservation}>Rezerwuj pokój</button>
     </div>) : 
     props.roomStatus === RoomStatus.RESERVED ? (<div className="actions">
-      <button>Szczegóły rezerwacji</button>
+      <button onClick={handleViewDetails}> Szczegóły rezerwacji</button>
     </div>
     ) : null}
   </>);

@@ -64,3 +64,24 @@ export const getUsersReservations = async (token: string): Promise<CreatedReserv
   console.log(reservations);
   return reservations;
 };
+
+
+export const getUsersReservationsById = async (token: string, id: string): Promise<CreatedReservationData> => {
+  console.log('here');
+  let url = `http://localhost:5000/api/customer/queries/get-users-reservation/${id}`;
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const reservation = await response.json();
+  console.log(reservation);
+  return reservation;
+};

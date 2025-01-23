@@ -59,6 +59,7 @@ function UserPage() {
       startDate: formatDate(reservation.startDate),
       endDate: formatDate(reservation.endDate),
       roomStatus: RoomStatus.RESERVED,
+      reservationId: reservation.id
     }))
   ) || [];
 
@@ -74,7 +75,7 @@ function UserPage() {
               <h3>Twoje rezerwacje:</h3>
               <div className="reservations-box">
             {transformedData.map((roomReservation, index) => (
-              <RoomComponent key={index} room={roomReservation.room} startDate={roomReservation.startDate} endDate={roomReservation.endDate} roomStatus={roomReservation.roomStatus} ></RoomComponent>
+              <RoomComponent key={index} room={roomReservation.room} startDate={roomReservation.startDate} endDate={roomReservation.endDate} roomStatus={roomReservation.roomStatus} reservationId={roomReservation.reservationId}></RoomComponent>
                 ))}
                 </div>
               </>

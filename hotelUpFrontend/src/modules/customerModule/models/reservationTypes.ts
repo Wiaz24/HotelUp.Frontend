@@ -11,7 +11,7 @@ export interface ReservationData {
 }
 
 export interface CreatedReservationData {
-  id: string[];
+  id: string;
   status: string;
   startDate: string;
   endDate: string;

@@ -15,6 +15,7 @@ export interface RoomProps {
   startDate: string;
   endDate: string;
   roomStatus: RoomStatus;
+  reservationId?: string;
 }
 
 export interface RoomActionsProps {
