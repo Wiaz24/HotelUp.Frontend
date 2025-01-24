@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import ReservationRoomInfoComponent from '../components/ReservationRoomInfoComponent';
 import ReservationTenantInfoComponent from '../components/ReservationTenantInfoComponent';
 import ReservationBillInfoComponent from '../components/ReservationBillInfoComponent';
-import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTasktypes';
+import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTaskTypes';
+import { ReservationStatus } from '../models/reservationStatus';
 
 function ReservationDetailsPage() {
   const auth = useAuth();
@@ -79,6 +80,13 @@ function ReservationDetailsPage() {
       <div className="part-column">
         <h4>Data i godzina wymeldowania:</h4>
         <div> {data?.endDate ? `${new Date(data.endDate).toLocaleDateString()} godzina 11:00` : ""} </div>
+      </div>
+      <div className="part-column">
+        <h4>Status rezerwacji</h4>
+        <div> {data?.status == ReservationStatus.VALID 
+        ? "Rezerwacja aktywna" 
+        : "Rezerwacja anulowana"
+        } </div>
       </div>
     </div>
   </div>

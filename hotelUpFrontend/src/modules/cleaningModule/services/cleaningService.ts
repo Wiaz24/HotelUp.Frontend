@@ -1,5 +1,4 @@
-import { APIResponse } from "../../../shared/models/apiTypes";
-import { CreateCleaningTask } from "../models/cleaningTasktypes";
+import { CreateCleaningTask } from "../models/cleaningTaskTypes";
 
 export const createCleaningTask = async({ reservationId, realisationDate, roomNumber, token }: CreateCleaningTask): Promise<any> => {
   const response = await fetch('http://localhost:5004/api/cleaning/cleaning-task', {

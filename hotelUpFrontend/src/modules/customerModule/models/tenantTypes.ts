@@ -1,5 +1,5 @@
 import { DocumentType } from "./documentTypes";
-import { ReservationStatus } from "./reservationStatus";
+import { TenantStatus } from "./tenantStaus";
 
 export interface Tenant {
   firstName: string;
@@ -8,5 +8,5 @@ export interface Tenant {
   email: string;
   pesel: string;
   documentType: DocumentType;
-  status: ReservationStatus;
+  status: TenantStatus;
 }
