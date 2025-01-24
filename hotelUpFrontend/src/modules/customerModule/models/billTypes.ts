@@ -1,5 +1,5 @@
 export interface Bill {
-  accommodationPrice: string;
+  accomodationPrice: string;
   additionalCosts: AdditionalCost[];
   payments: Payment[];
 }
