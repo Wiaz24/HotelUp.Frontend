@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "react-oidc-context";
 import "react-datepicker/dist/react-datepicker.css";
 import "./../../../shared/components/taskPages.css";
+import { useMutation } from "@tanstack/react-query";
+import { createCleaningTask } from "../services/cleaningService";
 
 function CreateCleaningTaskPage() {
   const auth = useAuth();
@@ -15,7 +17,8 @@ function CreateCleaningTaskPage() {
   const [reservationRooms, setReservationRooms] = useState<number[]>([]);
   const [reservationId, setReservationId] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedRoom, setSelectedRoom] = useState<number | undefined>(undefined);
+  const [roomNumber, setRoomNumber] = useState<number | undefined>(undefined);
+  const [token, setToken] = useState<string>("");
 
   useEffect (() => {
     const props = location.state as CreateCleaningTaskFormProps || undefined;
@@ -26,6 +29,7 @@ function CreateCleaningTaskPage() {
       setEndDate(parsedEndDate);
       setReservationRooms(props.rooms);
       setReservationId(props.id);
+      setToken(auth.user.access_token);
     }
     else {
       navigate('/');
@@ -38,16 +42,39 @@ function CreateCleaningTaskPage() {
   };
 
   const handleNumberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRoom(Number(e.target.value));
+    setRoomNumber(Number(e.target.value));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formattedDate = selectedDate?.toISOString().split("T")[0];
+    const realisationDate = selectedDate?.toISOString().split("T")[0];
     console.log("Reservation Id:", reservationId);
-    console.log("Selected Date:", formattedDate);
-    console.log("Selected Room Number:", selectedRoom);
+    console.log("Selected Date:", realisationDate);
+    console.log("Selected Room Number:", roomNumber);
+    
+    if (!realisationDate) {
+      alert("Data jest wymagana.");
+      return;
+    }
+  
+    if (!roomNumber) {
+      alert("Numer jest wymagany.");
+      return;
+    }  
+    mutate( {reservationId, realisationDate, roomNumber, token});
   };
+
+  const { mutate } = useMutation({
+    mutationKey: ['create-cleaning-task'],
+    mutationFn: createCleaningTask,
+    onSuccess: () => {
+      alert("Pomyślnie zlecono zadanie sprzątania");
+      navigate('/account');
+    },
+    onError: (error) => {
+      alert("Wystąpił błąd: " + error.message); // Obsługa błędów
+    },
+  });
 
   if (!startDate || !endDate || reservationRooms.length == 0) {
     return <div>Ładowanie danych...</div>;
@@ -71,7 +98,7 @@ function CreateCleaningTaskPage() {
         <label htmlFor="room-select">Wybierz pokój:</label>
         <select
           id="number-select"
-          value={selectedRoom ?? ""}
+          value={roomNumber ?? ""}
           onChange={handleNumberChange}>
             <option value="" disabled>
               Wybierz numer pokoju

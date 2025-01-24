@@ -1,7 +1,8 @@
 export interface CreateCleaningTask {
-  id: string;
+  reservationId: string;
   realisationDate: string
   roomNumber: number;
+  token: string
 }
 
 export interface CreateCleaningTaskFormProps {
