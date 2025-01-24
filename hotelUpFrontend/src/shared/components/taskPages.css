@@ -1,0 +1,28 @@
+.add-task-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+
+.choice-element{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.choice-element select {
+    text-align: center;
+}
+
+#date-picker {
+    text-align: center;
+    width: 90%;
+}

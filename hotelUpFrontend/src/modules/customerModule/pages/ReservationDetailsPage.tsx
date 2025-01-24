@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import ReservationRoomInfoComponent from '../components/ReservationRoomInfoComponent';
 import ReservationTenantInfoComponent from '../components/ReservationTenantInfoComponent';
 import ReservationBillInfoComponent from '../components/ReservationBillInfoComponent';
+import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTasktypes';
 
 function ReservationDetailsPage() {
   const auth = useAuth();
@@ -38,6 +39,17 @@ function ReservationDetailsPage() {
   if (!data) {
     return <p>Error while loading data.</p>
   }
+
+  const handleCleaningRedirect = () => {
+    const roomNumbers = data.rooms.map((room) => room.id);
+    const formProps: CreateCleaningTaskFormProps = {
+      startDate: data.startDate,
+      endDate: data.endDate,
+      rooms: roomNumbers,
+      id: data.id
+    };
+    navigate("/add-cleaning-task", {state: formProps});
+  };
 
   return ( <div className="reservation-details-container">
   <div className="main-info">
@@ -89,7 +101,7 @@ function ReservationDetailsPage() {
   </div>
 
   <div className="reservation-actions">
-    <button>Zamów sprzątanie</button>
+    <button onClick={handleCleaningRedirect}>Zamów sprzątanie</button>
     <button>Anuluj rezerwację</button>
   </div>
 
