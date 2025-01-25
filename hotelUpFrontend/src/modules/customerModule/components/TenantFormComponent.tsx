@@ -9,6 +9,7 @@ import { ReservationStatus } from "../models/reservationStatus";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { Tenant } from "../models/tenantTypes";
+import { TenantStatus } from "../models/tenantStaus";
 
 function TenantFormComponent (props: RoomProps) {
   const auth = useAuth();
@@ -52,7 +53,7 @@ function TenantFormComponent (props: RoomProps) {
           phoneNumber: phoneNumber,
           pesel: pesel,
           documentType: documentType,
-          status: ReservationStatus.PENDING,
+          status: TenantStatus.PENDING,
         },
       ];
       const token = auth.user.id_token;

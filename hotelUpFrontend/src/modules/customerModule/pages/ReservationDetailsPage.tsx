@@ -1,9 +1,9 @@
 import { useAuth } from 'react-oidc-context';
 import './reservationDetailsPage.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getUsersReservationsById } from '../services/customerService';
-import { useEffect } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { cancelReservation, getUsersReservationsById } from '../services/customerService';
+import { useEffect, useState } from 'react';
 import ReservationRoomInfoComponent from '../components/ReservationRoomInfoComponent';
 import ReservationTenantInfoComponent from '../components/ReservationTenantInfoComponent';
 import ReservationBillInfoComponent from '../components/ReservationBillInfoComponent';
@@ -14,6 +14,7 @@ function ReservationDetailsPage() {
   const auth = useAuth();
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
+  const [token, setToken] = useState<string>("");
 
   const {data} = useQuery({
     queryKey: ['get-reservation-by-id'],
@@ -25,9 +26,26 @@ function ReservationDetailsPage() {
     enabled: !!auth.user?.access_token && !!id,
   });
 
+  const { mutate } = useMutation({
+    mutationKey: ['cancel-reservation'],
+    mutationFn: cancelReservation,
+    onSuccess: () => {
+      alert('Pomyślnie anulowano rezerwację');
+      navigate('/account');
+    },
+    onError: (error: any) => {
+      const errorMessage = error.message;
+      const errorCode = error.code;
+      alert(`Błąd: ${errorMessage}\nTyp błędu: ${errorCode}`);
+    },
+  });
+
   useEffect(() => {
-    if (!auth.isAuthenticated) {
+    if (!auth.user) {
       navigate('/');
+    }
+    else {
+      setToken(auth.user.access_token);
     }
   
     if (data) {
@@ -35,7 +53,7 @@ function ReservationDetailsPage() {
     } else {
       console.log('data is undefined');
     }
-  }, [auth.isAuthenticated, navigate, data]);
+  }, [auth.user, navigate, data]);
 
   if (!data) {
     return <p>Error while loading data.</p>
@@ -50,6 +68,17 @@ function ReservationDetailsPage() {
       id: data.id
     };
     navigate("/add-cleaning-task", {state: formProps});
+  };
+
+  const handleCancelReservation = (e: React.FormEvent) => {
+    e.preventDefault();
+    const reservationId = data.id;
+    const isConfirmed = window.confirm("Czy na pewno chcesz anulować rezerwację?");
+    if (isConfirmed) {
+      mutate({ token: token, id: reservationId });
+    } else {
+      console.log("Użytkownik przerwał anulowanie rezerwacji");
+    }
   };
 
   return ( <div className="reservation-details-container">
@@ -110,7 +139,7 @@ function ReservationDetailsPage() {
 
   <div className="reservation-actions">
     <button onClick={handleCleaningRedirect}>Zamów sprzątanie</button>
-    <button>Anuluj rezerwację</button>
+    <button onClick={handleCancelReservation}>Anuluj rezerwację</button>
   </div>
 
   <footer>

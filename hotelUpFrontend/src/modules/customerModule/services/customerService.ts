@@ -1,4 +1,4 @@
-import { APIResponse } from "../../../shared/models/apiTypes";
+import { APIError, APIResponse } from "../../../shared/models/apiTypes";
 import { CreatedReservationData, ReservationData } from "../models/reservationTypes";
 import { Room } from "../models/roomTypes";
 
@@ -84,4 +84,27 @@ export const getUsersReservationsById = async (token: string, id: string): Promi
   const reservation = await response.json();
   console.log(reservation);
   return reservation;
+};
+
+export const cancelReservation = async ({token, id }: {token: string, id: string}): Promise<any> => {
+  const response = await fetch(`http://localhost:5000/api/customer/commands/cancel-reservation/${id}`, {
+    method: 'POST',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: '',
+  });
+
+  if (!response.ok) {
+    const errorData: APIError = await response.json();
+    console.log(errorData);
+    throw {
+      message: errorData.Message || "Wystąpił błąd podczas wysyłania danych",
+      code: errorData.Error || "Nieznany błąd",
+    };
+  }
+
+  return null;
 };

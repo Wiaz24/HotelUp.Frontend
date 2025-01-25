@@ -1,7 +1,7 @@
 export interface Bill {
   accomodationPrice: string;
-  additionalCosts: AdditionalCost[];
-  payments: Payment[];
+  additionalCosts?: AdditionalCost[];
+  payments?: Payment[];
 }
 
 export interface AdditionalCost {
