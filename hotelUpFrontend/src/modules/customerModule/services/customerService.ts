@@ -86,6 +86,16 @@ export const getUsersReservationsById = async (token: string, id: string): Promi
   return reservation;
 };
 
+export const mutationGetUsersReservationsByIdWrapper = async ({
+  token,
+  id,
+}: {
+  token: string;
+  id: string;
+}) => {
+  return getUsersReservationsById(token, id);
+};
+
 export const cancelReservation = async ({token, id }: {token: string, id: string}): Promise<any> => {
   const response = await fetch(`http://localhost:5000/api/customer/commands/cancel-reservation/${id}`, {
     method: 'POST',
