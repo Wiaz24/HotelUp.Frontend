@@ -12,14 +12,34 @@
 .elements-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 3em;
     width: 90%;
 }
 
 .single-element {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    justify-content: space-between;
     padding: 1em;
-    width: 90%;
+    width: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     border-radius: 0.1em;
     padding: 1em;
+    text-wrap: wrap;
+}
+
+.details-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .single-element {
+        flex-direction: column;
+        width: 70%;
+    }
 }

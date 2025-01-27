@@ -27,8 +27,8 @@ function AccountPage() {
     Receptionists: "/receptionist-details",
     Clients: "/client-details",
     Cooks: "cook-details/",
-    Cleaners: "cleaner-details/",
-    Janitors: "janitors-details/",
+    Cleaners: "/cleaner-details/",
+    Janitors: "/janitors-details/",
   };
 
   const buttonTexts: Record<string, string> = {

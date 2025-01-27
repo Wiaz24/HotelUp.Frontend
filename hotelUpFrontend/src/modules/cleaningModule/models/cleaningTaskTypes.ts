@@ -1,3 +1,6 @@
+import { CleaningStatus } from "./cleaningStatus";
+import { CleaningType } from "./cleaningType";
+
 export interface CreateCleaningTask {
   reservationId: string;
   realisationDate: string
@@ -10,4 +13,14 @@ export interface CreateCleaningTaskFormProps {
   startDate: string;
   endDate: string;
   rooms: number[];
+}
+
+export interface CleaningTask {
+  id: string;
+  reservationId: string;
+  realisationDate: string
+  roomNumber: number;
+  status: CleaningStatus;
+  cleaningType: CleaningType;
+  cleanerId: string;
 }
