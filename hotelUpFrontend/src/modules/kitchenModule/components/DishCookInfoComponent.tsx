@@ -8,7 +8,7 @@ function DishCookInfoComponent(props: Dish){
       <div> Cena: {props.price.amount}{props.price.currency}</div>
     </div>
     <div className="dish-image">
-      <img className="image" src={props.imageUrl.value}></img>
+      <img className="image-cook-dish-info" src={props.imageUrl.value}></img>
     </div>    
   </div>);
 }

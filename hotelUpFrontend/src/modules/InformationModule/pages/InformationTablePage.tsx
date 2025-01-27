@@ -10,6 +10,11 @@ import './informationTable.css';
 function InformationTablePage() {
   const [currentIndex, setCurrentIndex] = useState(0); 
   const [currentDataset, setCurrentDataset] = useState<'events' | 'dishes' | 'rooms'>('events');
+  const today = new Date();
+  const formattedToday = today.toISOString().split('T')[0];
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  const formattedTomorrow = tomorrow.toISOString().split('T')[0];
 
   const { data: hotelEvents, isLoading: areHotelEventsLoading, isError: isHotelEventsError } = useQuery({
     queryKey: ['get-hotel-evens'],
@@ -23,7 +28,7 @@ function InformationTablePage() {
 
   const { data: availableRooms, isLoading: areAvailableRoomsLoading, isError: isAvailableRoomsError } = useQuery({
     queryKey: ['get-available-rooms'],
-    queryFn:() => getFreeRooms(),
+    queryFn:() => getFreeRooms(formattedToday, formattedTomorrow),
   });
 
   useEffect(() => {
@@ -89,18 +94,14 @@ function InformationTablePage() {
 
   return (
     <div className="advert-container">
-      <button
-        onClick={handlePrevious}
-        className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 absolute left-0">
+      <button onClick={handlePrevious}>
         ◀
       </button>
         {currentDataset === 'events' && hotelEvents && <EventComponent {...hotelEvents[currentIndex]}/>}
         {currentDataset === 'dishes' && plannedDishes && <DishComponent {...plannedDishes[currentIndex]}/>}
         {currentDataset === 'rooms' && availableRooms && <AvailableRoomComponent {...availableRooms[currentIndex]}/>}      
       <button
-        onClick={handleNext}
-        className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 absolute right-0"
-      >
+        onClick={handleNext}>
         ▶
       </button>
     </div>
