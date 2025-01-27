@@ -24,3 +24,9 @@ export interface CleaningTask {
   cleaningType: CleaningType;
   cleanerId: string;
 }
+
+export interface UpdateCleaningTask {
+  token: string;
+  id: string;
+  status: string;
+}

@@ -1,4 +1,5 @@
-import { CleaningTask, CreateCleaningTask } from "../models/cleaningTaskTypes";
+import { APIError } from "../../../shared/models/apiTypes";
+import { CleaningTask, CreateCleaningTask, UpdateCleaningTask } from "../models/cleaningTaskTypes";
 
 const baseUrl='http://localhost:5004/api/cleaning';
 
@@ -60,4 +61,27 @@ export const getCleaningTaskById = async (token: string, id: string): Promise<Cl
   console.log('tasl');
   console.log(cleaningTask);
   return cleaningTask;
-}
+};
+
+export const updateCleaningTaskStatus = async ({ token, id, status  }: UpdateCleaningTask): Promise<any> => {
+  const url = new URL(`${baseUrl}/cleaning-task/${id}`);
+  url.searchParams.append('Status', status);
+  const response = await fetch(url.href, {
+    method: 'PUT',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    const errorData: APIError = await response.json();
+    console.log(errorData);
+    throw {
+      message: errorData.Message || "Wystąpił błąd podczas wysyłania danych",
+      code: errorData.Error || "Nieznany błąd",
+    };
+  }
+  return null;
+};
