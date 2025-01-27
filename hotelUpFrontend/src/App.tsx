@@ -12,6 +12,7 @@ import AccountPage from './shared/pages/AccountPage'
 import ReceptionistPage from './modules/customerModule/pages/ReceptionistPage'
 import CleanerMainPage from './modules/cleaningModule/pages/CleanerMainPage'
 import UpdateCleaningTaskPage from './modules/cleaningModule/pages/UpdateCleaningTaskPage'
+import CookMainCookPage from './modules/kitchenModule/pages/CookMainPage'
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="receptionist-details" element={<ReceptionistPage/>}></Route>
             <Route path="cleaner-details" element={<CleanerMainPage/>}></Route>
             <Route path="/cleaning-task-details/:id" element={<UpdateCleaningTaskPage/>}/>
+            <Route path="/cook-details" element={<CookMainCookPage/>}/>
           </Routes>
         </main>
     </QueryClientProvider>    

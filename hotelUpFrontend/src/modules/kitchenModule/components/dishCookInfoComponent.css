@@ -1,0 +1,27 @@
+.dish-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 0.3em;
+    width: 100%;
+}
+
+.dish-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.3em;
+    justify-content: center;
+
+}
+
+.dish-image {
+    flex: 1;
+    width: 100%;
+}
+  
+.image {
+    width: 10em;
+    height: 100%;
+    object-fit: cover;
+}

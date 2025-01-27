@@ -26,7 +26,7 @@ function AccountPage() {
     Admins: "/receptionist-details",
     Receptionists: "/receptionist-details",
     Clients: "/client-details",
-    Cooks: "cook-details/",
+    Cooks: "/cook-details/",
     Cleaners: "/cleaner-details/",
     Janitors: "/janitors-details/",
   };
