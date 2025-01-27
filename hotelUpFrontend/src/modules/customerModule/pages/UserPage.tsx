@@ -67,12 +67,9 @@ function UserPage() {
     return (
       <div className="user-page">
         <div className="welcome-text">Witaj: {auth.user?.profile.email} <button onClick={signOutRedirect}>Wyloguj się</button></div>
-        <pre>ID Token: {auth.user?.id_token}</pre>
-        <pre>Access Token: {auth.user?.access_token}</pre>
-        <pre>Refresh Token: {auth.user?.refresh_token}</pre>
           {transformedData.length > 0 ? (
             <>
-              <h3>Twoje rezerwacje:</h3>
+              <h4>Twoje rezerwacje:</h4>
               <div className="reservations-box">
             {transformedData.map((roomReservation, index) => (
               <RoomComponent key={index} room={roomReservation.room} startDate={roomReservation.startDate} endDate={roomReservation.endDate} roomStatus={roomReservation.roomStatus} reservationId={roomReservation.reservationId}></RoomComponent>

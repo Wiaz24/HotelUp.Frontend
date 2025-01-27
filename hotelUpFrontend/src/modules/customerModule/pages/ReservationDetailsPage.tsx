@@ -9,6 +9,7 @@ import ReservationTenantInfoComponent from '../components/ReservationTenantInfoC
 import ReservationBillInfoComponent from '../components/ReservationBillInfoComponent';
 import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTaskTypes';
 import { ReservationStatus } from '../models/reservationStatus';
+import { HotelDay } from '../models/hotelDay';
 
 function ReservationDetailsPage() {
   const auth = useAuth();
@@ -104,11 +105,11 @@ function ReservationDetailsPage() {
     <div className="details-part-content">
       <div className="part-column">
         <h4>Data i godzina zameldowania:</h4>
-        <div> {data?.startDate ? `${new Date(data.startDate).toLocaleDateString()}  godzina 14:00`: ""} </div>
+        <div> {data?.startDate ? `${new Date(data.startDate).toLocaleDateString()}  godzina ${HotelDay.START}`: ""} </div>
       </div>
       <div className="part-column">
         <h4>Data i godzina wymeldowania:</h4>
-        <div> {data?.endDate ? `${new Date(data.endDate).toLocaleDateString()} godzina 11:00` : ""} </div>
+        <div> {data?.endDate ? `${new Date(data.endDate).toLocaleDateString()} godzina ${HotelDay.END}` : ""} </div>
       </div>
       <div className="part-column">
         <h4>Status rezerwacji</h4>

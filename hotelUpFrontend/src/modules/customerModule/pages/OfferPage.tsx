@@ -7,6 +7,8 @@ import RoomComponent from "../../../shared/components/room/RoomComponent";
 import { useQuery } from "@tanstack/react-query";
 import { getFreeRooms } from "../services/customerService";
 import { RoomStatus } from "../../../shared/models/roomStatus";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 
 function OfferPage() {
   const today = new Date();
@@ -35,18 +37,67 @@ function OfferPage() {
 
   const rooms = data ?? [];
 
+  const handleStartDateChange = (date: Date | null) => {
+    if (date) {
+      const formattedDate = date.toISOString().split("T")[0];
+      setStartDate(formattedDate);
+
+      if (endDate && new Date(endDate) < date) {
+        setEndDate("");
+      }
+    }
+  };
+
+  const handleEndDateChange = (date: Date | null) => {
+    if (date) {
+      const formattedDate = date.toISOString().split("T")[0];
+
+      if (startDate && new Date(startDate) > date) {
+        alert("Data końcowa musi być późniejsza niż data początkowa");
+        return;
+      }
+      setEndDate(formattedDate);
+    }
+  };
+
+
   return ( <div className="offer-page">
     <h2>Wybierz swój pokój</h2>
       <div className="filter-box">
         <div className="filters">
-          <label>
+        <label>
+        Data od:
+        <DatePicker
+          selected={new Date(startDate)}
+          onChange={handleStartDateChange}
+          dateFormat="yyyy-MM-dd"
+          selectsStart
+          startDate={new Date(startDate)}
+          endDate={endDate ? new Date(endDate) : null}
+          minDate={today}
+        />
+      </label>
+
+          {/* <label>
             Data od:
             <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
-          </label>
-          <label>
+          </label> */}
+          {/* <label>
             Data do:
             <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
-          </label>
+          </label> */}
+          <label>
+        Data do:
+        <DatePicker
+          selected={endDate ? new Date(endDate) : null}
+          onChange={handleEndDateChange}
+          dateFormat="yyyy-MM-dd"
+          selectsEnd
+          startDate={new Date(startDate)}
+          endDate={endDate ? new Date(endDate) : null}
+          minDate={new Date(startDate)}
+        />
+      </label>
           <label>
             Typ pokoju:
             <select value={roomType} onChange={(e) => setRoomType(e.target.value)}>

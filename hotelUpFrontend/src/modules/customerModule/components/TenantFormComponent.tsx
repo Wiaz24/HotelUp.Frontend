@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DocumentType } from "../models/documentTypes";
 
 import './tenantFormComponent.css'
 import { createReservation } from "../services/customerService";
 import { RoomProps } from "../models/roomTypes";
 import { useAuth } from "react-oidc-context";
-import { ReservationStatus } from "../models/reservationStatus";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { Tenant } from "../models/tenantTypes";
@@ -23,11 +22,15 @@ function TenantFormComponent (props: RoomProps) {
   const [documentType, setDocumentType] = useState<DocumentType>(DocumentType.ID_CARD);
 
 
-  const { mutate, isError, error, isSuccess } = useMutation({
+  const { mutate, isError, error } = useMutation({
     mutationKey: ['create-reservation'],
     mutationFn: createReservation,
     onSuccess: () => {
+      alert("Pomyślnie utworzono rezerwację :)");
       navigate('/account');
+    },
+    onError: () => {
+      alert("Wystąpił błąd podczas tworzenia rezerwacji");
     },
   });
   
