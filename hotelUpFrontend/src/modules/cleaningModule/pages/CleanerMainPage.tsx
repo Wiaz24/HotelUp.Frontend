@@ -26,6 +26,11 @@ function CleanerMainPage() {
     enabled: !!auth.user?.access_token,
   });
 
+  const handleRedirect = (taskId: string) => {
+    console.log('siema', taskId);
+    navigate(`/cleaning-task-details/${taskId}`);
+  };
+
   return(
     <div className='common-component'> 
       <div className='title'>Przydzielone zadania sprzątania:</div>
@@ -37,7 +42,7 @@ function CleanerMainPage() {
                 <div>Zlecone na: {task.realisationDate}</div>
                 <div>Status: {task.status}</div>
               </div>
-              <div><button>Szczegóły</button></div>
+              <div><button onClick={() => handleRedirect(task.id)}>Szczegóły</button></div>
             </div>
           ))
         ) : (

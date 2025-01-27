@@ -41,3 +41,23 @@ export const getCleanerTasks = async (token: string): Promise<CleaningTask[]> =>
   console.log(cleaningTasks);
   return cleaningTasks;
 };
+
+export const getCleaningTaskById = async (token: string, id: string): Promise<CleaningTask> => {
+  const url = `${baseUrl}/cleaning-task/${id}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      accept: '*/*',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const cleaningTask = await response.json();
+  console.log('tasl');
+  console.log(cleaningTask);
+  return cleaningTask;
+}

@@ -11,6 +11,7 @@ import CreateCleaningTaskPage from './modules/cleaningModule/pages/CreateCleanin
 import AccountPage from './shared/pages/AccountPage'
 import ReceptionistPage from './modules/customerModule/pages/ReceptionistPage'
 import CleanerMainPage from './modules/cleaningModule/pages/CleanerMainPage'
+import UpdateCleaningTaskPage from './modules/cleaningModule/pages/UpdateCleaningTaskPage'
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/client-details" element={<UserPage/>}></Route>
             <Route path="receptionist-details" element={<ReceptionistPage/>}></Route>
             <Route path="cleaner-details" element={<CleanerMainPage/>}></Route>
+            <Route path="/cleaning-task-details/:id" element={<UpdateCleaningTaskPage/>}/>
           </Routes>
         </main>
     </QueryClientProvider>    
