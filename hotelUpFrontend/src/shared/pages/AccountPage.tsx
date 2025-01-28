@@ -28,7 +28,7 @@ function AccountPage() {
     Clients: "/client-details",
     Cooks: "/cook-details/",
     Cleaners: "/cleaner-details/",
-    Janitors: "/janitors-details/",
+    Janitors: "/janitor-details/",
   };
 
   const buttonTexts: Record<string, string> = {
@@ -36,7 +36,7 @@ function AccountPage() {
     Receptionists: "Panel recepcjonisty",
     Clients: "Podgląd Twoich rezerwacji",
     Cooks: "Panel kucharza",
-    Cleaners: "Panel sprzątacza",
+    Cleaners: "Panel ekipy sprzątającej",
     Janitors: "Panel serwisu naprawczego",
   };
 

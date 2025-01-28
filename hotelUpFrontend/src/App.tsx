@@ -13,6 +13,8 @@ import ReceptionistPage from './modules/customerModule/pages/ReceptionistPage'
 import CleanerMainPage from './modules/cleaningModule/pages/CleanerMainPage'
 import UpdateCleaningTaskPage from './modules/cleaningModule/pages/UpdateCleaningTaskPage'
 import CookMainCookPage from './modules/kitchenModule/pages/CookMainPage'
+import JanitorMainPage from './modules/repairModule/pages/JanitorMainPage'
+import RepairTaskDetails from './modules/repairModule/pages/RepairTaskDetails'
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ function App() {
             <Route path="cleaner-details" element={<CleanerMainPage/>}></Route>
             <Route path="/cleaning-task-details/:id" element={<UpdateCleaningTaskPage/>}/>
             <Route path="/cook-details" element={<CookMainCookPage/>}/>
+            <Route path="/janitor-details" element={<JanitorMainPage/>}></Route>
+            <Route path="/repair-task-details/:id" element={<RepairTaskDetails></RepairTaskDetails>}></Route>
           </Routes>
         </main>
     </QueryClientProvider>    
