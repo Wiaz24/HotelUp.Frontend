@@ -11,7 +11,7 @@ form {
 
 
 form > div {
-    flex: 1 1 30%;
+    flex: 1 1 calc(50% - 1em);
     display: flex;
     flex-direction: column;
     gap: 0.5em;

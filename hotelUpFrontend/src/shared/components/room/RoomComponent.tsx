@@ -10,7 +10,7 @@ function RoomComponent(props: RoomProps) {
   return(<div className="room-box"> 
     <div className="room-info">
       <div className="image-div">
-        <img src={image} alt="Image" className="room-image" />
+        <img src={props.room.imageUrl} alt="Image" className="room-image" />
       </div>
       <div className="description">
         <div>Typ: <span>{props.room.type}</span> </div>
