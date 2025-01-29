@@ -11,7 +11,7 @@ function EventComponent(props: HotelEvent) {
     <div className="text-container">
       <h2>Wydarzenia odbywające się w hotelu</h2>
       <p><strong>{props.title}</strong></p>
-      <p>Kiedy: {props.date}</p>
+      <p>Kiedy: {new Date(props.date).toLocaleDateString()}</p>
       <p>{props.description}</p>
       <p>Numer identyfikujący wydarzenia: {props.id}</p>
     </div>

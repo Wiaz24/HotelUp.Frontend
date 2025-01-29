@@ -1,4 +1,4 @@
-import { HotelEvent, PlannedDish } from "../models/informationInterfaces";
+import { HotelEvent, PlannedDish, RoomInformation } from "../models/informationInterfaces";
 
 const baseUrl = 'http://localhost:5003/api/information'
 
@@ -16,7 +16,7 @@ export const getPlannedDishes = async (): Promise<PlannedDish[]> => {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
   const dishes = await response.json();
-  console.log(dishes);
+  console.log("obiadki", dishes);
   return dishes;
 };
 
@@ -39,7 +39,7 @@ export const getHotelEvents = async (): Promise<HotelEvent[]> => {
 };
 
 
-export const getAvailableRooms = async (): Promise<HotelEvent[]> => {
+export const getAvailableRooms = async (): Promise<RoomInformation[]> => {
   const url = `${baseUrl}/room-information`;
 
   const response = await fetch(url, {

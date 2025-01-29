@@ -10,3 +10,10 @@ export interface HotelEvent {
   description: string;
   date: string;
 }
+
+export interface RoomInformation {
+  number: number;
+  capacity: number;
+  withSpecialNeeds: boolean;
+  imageUrl: string;
+}

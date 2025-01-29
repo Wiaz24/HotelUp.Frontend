@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { getHotelEvents, getPlannedDishes } from "../services/informationService";
-import { getFreeRooms } from "../../customerModule/services/customerService";
+import { getAvailableRooms, getHotelEvents, getPlannedDishes } from "../services/informationService";
 import EventComponent from "../components/EventComponent";
 import DishComponent from "../components/DishComponent";
 import AvailableRoomComponent from "../components/AvailableRoomComponent";
@@ -11,10 +10,10 @@ function InformationTablePage() {
   const [currentIndex, setCurrentIndex] = useState(0); 
   const [currentDataset, setCurrentDataset] = useState<'events' | 'dishes' | 'rooms'>('events');
   const today = new Date();
-  const formattedToday = today.toISOString().split('T')[0];
+  // const formattedToday = today.toISOString().split('T')[0];
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
-  const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+  // const formattedTomorrow = tomorrow.toISOString().split('T')[0];
 
   const { data: hotelEvents, isLoading: areHotelEventsLoading, isError: isHotelEventsError } = useQuery({
     queryKey: ['get-hotel-evens'],
@@ -27,8 +26,8 @@ function InformationTablePage() {
   });
 
   const { data: availableRooms, isLoading: areAvailableRoomsLoading, isError: isAvailableRoomsError } = useQuery({
-    queryKey: ['get-available-rooms'],
-    queryFn:() => getFreeRooms(formattedToday, formattedTomorrow),
+    queryKey: ['get-available-rooms-information'],
+    queryFn:() => getAvailableRooms(),
   });
 
   useEffect(() => {
