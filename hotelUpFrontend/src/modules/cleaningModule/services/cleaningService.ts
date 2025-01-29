@@ -4,7 +4,8 @@ import { CleaningTask, CreateCleaningTask, UpdateCleaningTask } from "../models/
 const baseUrl='http://localhost:5004/api/cleaning';
 
 export const createCleaningTask = async({ reservationId, realisationDate, roomNumber, token }: CreateCleaningTask): Promise<any> => {
-  const response = await fetch('http://localhost:5004/api/cleaning/cleaning-task', {
+  const url = `${baseUrl}/cleaning-task`;
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       accept: '*/*',

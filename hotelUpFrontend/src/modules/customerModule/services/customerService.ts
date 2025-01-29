@@ -2,9 +2,10 @@ import { APIError, APIResponse } from "../../../shared/models/apiTypes";
 import { CreatedReservationData, ReservationData } from "../models/reservationTypes";
 import { Room } from "../models/roomTypes";
 
+const baseUrl = 'http://localhost:5000/api/customer';
 
 export const getFreeRooms = async (startDate?: string, endDate?: string, roomType?: string, capacity?: number | null): Promise<Room[]> => {
-  let url = 'http://localhost:5000/api/customer/queries/get-free-rooms';
+  let url = `${baseUrl}/queries/get-free-rooms/`;
 
   const params: URLSearchParams = new URLSearchParams();
   if (startDate) params.append('StartDate', startDate);
@@ -27,7 +28,8 @@ export const getFreeRooms = async (startDate?: string, endDate?: string, roomTyp
 };
 
 export const createReservation = async ({ roomNumbers, tenantsData, startDate, endDate, token }: ReservationData): Promise<APIResponse> => {
-  const response = await fetch('http://localhost:5000/api/customer/commands/create-reservation', {
+  const url = `${baseUrl}/commands/create-reservation`;
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       accept: '*/*',
@@ -46,8 +48,7 @@ export const createReservation = async ({ roomNumbers, tenantsData, startDate, e
 };
 
 export const getUsersReservations = async (token: string): Promise<CreatedReservationData[]> => {
-  console.log('here');
-  let url = 'http://localhost:5000/api/customer/queries/get-users-reservations';
+  const url = `${baseUrl}/queries/get-users-reservations/`;
 
   const response = await fetch(url, {
     method: 'GET',
@@ -67,8 +68,7 @@ export const getUsersReservations = async (token: string): Promise<CreatedReserv
 
 
 export const getUsersReservationsById = async (token: string, id: string): Promise<CreatedReservationData> => {
-  console.log('here');
-  let url = `http://localhost:5000/api/customer/queries/get-users-reservation/${id}`;
+  const url = `${baseUrl}/queries/get-users-reservation/${id}`;
 
   const response = await fetch(url, {
     method: 'GET',
@@ -97,7 +97,8 @@ export const mutationGetUsersReservationsByIdWrapper = async ({
 };
 
 export const cancelReservation = async ({token, id }: {token: string, id: string}): Promise<any> => {
-  const response = await fetch(`http://localhost:5000/api/customer/commands/cancel-reservation/${id}`, {
+  const url = `${baseUrl}/commands/cancel-reservation`;
+  const response = await fetch(`${url}/${id}`, {
     method: 'POST',
     headers: {
       accept: '*/*',
