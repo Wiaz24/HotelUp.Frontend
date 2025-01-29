@@ -17,6 +17,16 @@ export interface RepairTask {
 }
 
 export interface CreateRepairTaskFormProps {
-
+  id: string;
+  rooms: number[];
+  endDate: string;
 }
 
+export interface CreateRepairTask {
+  title: string;
+  reservationId: string;
+  description: string;
+  roomNumber: number;
+  deadline : string;
+  token: string;
+}

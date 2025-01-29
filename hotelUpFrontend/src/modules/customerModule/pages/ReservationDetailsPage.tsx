@@ -10,6 +10,7 @@ import ReservationBillInfoComponent from '../components/ReservationBillInfoCompo
 import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTaskTypes';
 import { ReservationStatus } from '../models/reservationStatus';
 import { HotelDay } from '../models/hotelDay';
+import { CreateRepairTaskFormProps } from '../../repairModule/models/repairTaskInterfaces';
 
 function ReservationDetailsPage() {
   const auth = useAuth();
@@ -69,6 +70,16 @@ function ReservationDetailsPage() {
       id: data.id
     };
     navigate("/add-cleaning-task", {state: formProps});
+  };
+
+  const handleRepairRedirect = () => {
+    const roomNumbers = data.rooms.map((room) => room.id);
+    const formProps: CreateRepairTaskFormProps = {
+      id: data.id,
+      rooms: roomNumbers,
+      endDate: data.endDate,
+    };
+    navigate("/add-repair-task", {state: formProps});
   };
 
   const handleCancelReservation = (e: React.FormEvent) => {
@@ -140,6 +151,7 @@ function ReservationDetailsPage() {
 
   <div className="reservation-actions">
     <button onClick={handleCleaningRedirect}>Zamów sprzątanie</button>
+    <button onClick={handleRepairRedirect}>Zamów serwis naprawczy</button>
     <button onClick={handleCancelReservation}>Anuluj rezerwację</button>
   </div>
 

@@ -15,6 +15,7 @@ import UpdateCleaningTaskPage from './modules/cleaningModule/pages/UpdateCleanin
 import CookMainCookPage from './modules/kitchenModule/pages/CookMainPage'
 import JanitorMainPage from './modules/repairModule/pages/JanitorMainPage'
 import RepairTaskDetails from './modules/repairModule/pages/RepairTaskDetails'
+import CreateRepairTaskPage from './modules/repairModule/pages/CreateRepairTaskPage'
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/cook-details" element={<CookMainCookPage/>}/>
             <Route path="/janitor-details" element={<JanitorMainPage/>}></Route>
             <Route path="/repair-task-details/:id" element={<RepairTaskDetails></RepairTaskDetails>}></Route>
+            <Route path="/add-repair-task" element={<CreateRepairTaskPage></CreateRepairTaskPage>}></Route>
           </Routes>
         </main>
     </QueryClientProvider>    

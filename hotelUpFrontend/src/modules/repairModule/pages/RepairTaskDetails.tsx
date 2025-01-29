@@ -14,7 +14,7 @@ function RepairTaskDetails() {
   }, [task, navigate]);
   
   return (<div className="common-component">
-    <div className="title">Zadanie {task.title}</div>
+    <div className="title">Zadanie: {task.title}</div>
     <div className="title"> Opis zadania: {task.description}</div>
       <div className="single-element">
         <div className="details-info">
