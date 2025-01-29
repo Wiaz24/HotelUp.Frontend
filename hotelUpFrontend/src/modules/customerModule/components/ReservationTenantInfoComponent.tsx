@@ -1,5 +1,5 @@
 import { DocumentType } from "../models/documentTypes";
-import { Tenant } from "../models/tenantTypes";
+import { Tenant } from "../models/tenantInterfaces";
 import './../pages/reservationDetailsPage.css';
 
 function ReservationTenantInfoComponent(props: Tenant) {

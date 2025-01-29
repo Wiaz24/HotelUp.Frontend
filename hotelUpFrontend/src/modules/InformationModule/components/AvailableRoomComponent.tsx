@@ -1,4 +1,4 @@
-import { Room } from "../../customerModule/models/roomTypes";
+import { Room } from "../../customerModule/models/roomInterfaces";
 
 function AvailableRoomComponent(props: Room){
   return (<div className="current-advert">

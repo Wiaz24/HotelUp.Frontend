@@ -1,5 +1,5 @@
 import DatePicker from "react-datepicker";
-import { CreateCleaningTaskFormProps } from "../models/cleaningTaskTypes";
+import { CreateCleaningTaskFormProps } from "../models/cleaningTaskInterfaces";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "react-oidc-context";

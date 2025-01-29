@@ -1,5 +1,5 @@
 import { DocumentType } from "./documentTypes";
-import { TenantStatus } from "./tenantStaus";
+import { TenantStatus } from "./tenantStatus";
 
 export interface Tenant {
   firstName: string;

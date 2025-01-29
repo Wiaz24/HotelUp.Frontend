@@ -1,4 +1,4 @@
-import { Dish } from "../models/dishInterface";
+import { Dish } from "../models/dishInterfaces";
 import './dishCookInfoComponent.css';
 
 function DishCookInfoComponent(props: Dish){

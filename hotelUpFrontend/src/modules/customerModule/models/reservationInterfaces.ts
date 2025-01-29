@@ -1,6 +1,6 @@
-import { Bill } from "./billTypes";
-import { Room } from "./roomTypes";
-import { Tenant } from "./tenantTypes";
+import { Bill } from "./billInterfaces";
+import { Room } from "./roomInterfaces";
+import { Tenant } from "./tenantInterfaces";
 
 export interface ReservationData {
   roomNumbers: number[];

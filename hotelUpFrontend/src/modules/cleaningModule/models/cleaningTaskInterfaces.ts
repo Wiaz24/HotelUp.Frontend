@@ -1,4 +1,4 @@
-import { CleaningStatus } from "./cleaningStatus";
+import { TaskStatus } from "../../../shared/models/taskStatus";
 import { CleaningType } from "./cleaningType";
 
 export interface CreateCleaningTask {
@@ -20,7 +20,7 @@ export interface CleaningTask {
   reservationId: string;
   realisationDate: string
   roomNumber: number;
-  status: CleaningStatus;
+  status: TaskStatus;
   cleaningType: CleaningType;
   cleanerId: string;
 }

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import ReservationRoomInfoComponent from '../components/ReservationRoomInfoComponent';
 import ReservationTenantInfoComponent from '../components/ReservationTenantInfoComponent';
 import ReservationBillInfoComponent from '../components/ReservationBillInfoComponent';
-import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTaskTypes';
+import { CreateCleaningTaskFormProps } from '../../cleaningModule/models/cleaningTaskInterfaces';
 import { ReservationStatus } from '../models/reservationStatus';
 import { HotelDay } from '../models/hotelDay';
 import { CreateRepairTaskFormProps } from '../../repairModule/models/repairTaskInterfaces';
@@ -77,6 +77,7 @@ function ReservationDetailsPage() {
     const formProps: CreateRepairTaskFormProps = {
       id: data.id,
       rooms: roomNumbers,
+      startDate: data.startDate,
       endDate: data.endDate,
     };
     navigate("/add-repair-task", {state: formProps});

@@ -1,4 +1,4 @@
-import { Bill } from "../models/billTypes";
+import { Bill } from "../models/billInterfaces";
 import './../pages/reservationDetailsPage.css';
 
 function ReservationBillInfoComponent(props: Bill) {

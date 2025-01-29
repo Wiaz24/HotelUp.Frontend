@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { RoomProps } from "../../../modules/customerModule/models/roomTypes";
+import { RoomProps } from "../../../modules/customerModule/models/roomInterfaces";
 import { RoomStatus } from "../../models/roomStatus";
 
 

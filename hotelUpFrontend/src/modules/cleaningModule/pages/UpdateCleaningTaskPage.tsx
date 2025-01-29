@@ -73,7 +73,7 @@ function UpdateCleaningTaskPage() {
           Data realizacji: {new Date(data.realisationDate).toLocaleDateString()}
         </div>
         <div> 
-          Pokój: {data.roomNumber}
+          Numer pokoju: {data.roomNumber}
         </div>
         <div>
           <label htmlFor="status-select">Ustaw status:</label>

@@ -1,5 +1,5 @@
 import { Cook } from "./cookInterfaces";
-import { Dish } from "./dishInterface";
+import { Dish } from "./dishInterfaces";
 
 export interface Menu {
   cook: Cook;

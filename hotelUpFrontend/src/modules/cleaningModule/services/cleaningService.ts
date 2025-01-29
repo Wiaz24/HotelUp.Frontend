@@ -1,5 +1,5 @@
 import { APIError } from "../../../shared/models/apiTypes";
-import { CleaningTask, CreateCleaningTask, UpdateCleaningTask } from "../models/cleaningTaskTypes";
+import { CleaningTask, CreateCleaningTask, UpdateCleaningTask } from "../models/cleaningTaskInterfaces";
 
 const baseUrl='http://localhost:5004/api/cleaning';
 

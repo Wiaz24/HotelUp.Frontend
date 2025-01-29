@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getUsersReservations } from "../services/customerService";
 import RoomComponent from "../../../shared/components/room/RoomComponent";
-import { RoomProps } from "../models/roomTypes";
+import { RoomProps } from "../models/roomInterfaces";
 import { RoomStatus } from "../../../shared/models/roomStatus";
 
 function UserPage() {

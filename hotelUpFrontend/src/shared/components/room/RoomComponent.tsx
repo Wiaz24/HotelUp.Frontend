@@ -1,11 +1,11 @@
 import './roomComponent.css';
-import hotelImage from "../../../assets/images/hotel.jpg";
-import { RoomProps } from '../../../modules/customerModule/models/roomTypes';
+// import hotelImage from "../../../assets/images/hotel.jpg";
+import { RoomProps } from '../../../modules/customerModule/models/roomInterfaces';
 import RoomActionsComponent from './RoomActionsComponent';
 
 
 function RoomComponent(props: RoomProps) {
-  const image = hotelImage;
+  // const image = hotelImage;
   
   return(<div className="room-box"> 
     <div className="room-info">

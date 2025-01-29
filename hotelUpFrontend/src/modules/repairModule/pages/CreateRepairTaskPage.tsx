@@ -18,14 +18,17 @@ function CreateRepairTaskPage() {
   const [title, setTitle] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
 
   useEffect (() => {
     const props = location.state as CreateRepairTaskFormProps || undefined;
     if (props && auth.user) {
       const parsedEndDate = new Date(props.endDate);
+      const parsedStartDate = new Date(props.startDate);
       setReservationRooms(props.rooms);
       setReservationId(props.id);
       setToken(auth.user.access_token);
+      setStartDate(parsedStartDate);
       setEndDate(parsedEndDate);
     }
     else {
@@ -104,7 +107,7 @@ function CreateRepairTaskPage() {
           id="date-picker"
           selected={selectedDate}
           onChange={handleDateChange}
-          minDate={new Date()}
+          minDate={startDate}
           maxDate={endDate}
           dateFormat="yyyy-MM-dd"
         />

@@ -3,12 +3,12 @@ import { DocumentType } from "../models/documentTypes";
 
 import './tenantFormComponent.css'
 import { createReservation } from "../services/customerService";
-import { RoomProps } from "../models/roomTypes";
+import { RoomProps } from "../models/roomInterfaces";
 import { useAuth } from "react-oidc-context";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { Tenant } from "../models/tenantTypes";
-import { TenantStatus } from "../models/tenantStaus";
+import { Tenant } from "../models/tenantInterfaces";
+import { TenantStatus } from "../models/tenantStatus";
 
 function TenantFormComponent (props: RoomProps) {
   const auth = useAuth();

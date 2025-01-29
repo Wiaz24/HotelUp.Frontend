@@ -39,7 +39,7 @@ function CleanerMainPage() {
           data.map((task, index) => (
             <div key={index} className="single-element"> 
               <div className="details-info">
-                <div>Zlecone na: {task.realisationDate}</div>
+                <div>Zlecone na: {new Date(task.realisationDate).toLocaleDateString()}</div>
                 <div>Status: {task.status}</div>
               </div>
               <div><button onClick={() => handleRedirect(task.id)}>Szczegóły</button></div>

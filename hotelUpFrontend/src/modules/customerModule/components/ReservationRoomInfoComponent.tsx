@@ -1,4 +1,4 @@
-import { Room } from "../models/roomTypes";
+import { Room } from "../models/roomInterfaces";
 import './../pages/reservationDetailsPage.css';
 
 

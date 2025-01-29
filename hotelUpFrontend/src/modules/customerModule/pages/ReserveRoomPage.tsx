@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import TenantFormComponent from "../components/TenantFormComponent";
 import { useEffect, useState } from "react";
 import RoomComponent from "../../../shared/components/room/RoomComponent";
-import { RoomProps } from "../models/roomTypes";
+import { RoomProps } from "../models/roomInterfaces";
 import { RoomStatus } from "../../../shared/models/roomStatus";
 
 import './reserveRoomPage.css';
@@ -28,7 +28,7 @@ function ReserveRoomPage(){
   if (roomProps) {
     return (<div className="reservation-component">
       <RoomComponent {...roomProps}></RoomComponent>
-      <h3>Dane właściciela rezerwacji:</h3>
+      <h3>Dane gości:</h3>
       <TenantFormComponent {...roomProps}></TenantFormComponent>
     </div>);
   }

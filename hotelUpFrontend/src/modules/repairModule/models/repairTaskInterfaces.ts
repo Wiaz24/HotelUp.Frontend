@@ -19,6 +19,7 @@ export interface RepairTask {
 export interface CreateRepairTaskFormProps {
   id: string;
   rooms: number[];
+  startDate: string;
   endDate: string;
 }
 

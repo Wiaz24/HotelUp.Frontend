@@ -1,6 +1,6 @@
 import { APIError, APIResponse } from "../../../shared/models/apiTypes";
-import { CreatedReservationData, ReservationData } from "../models/reservationTypes";
-import { Room } from "../models/roomTypes";
+import { CreatedReservationData, ReservationData } from "../models/reservationInterfaces";
+import { Room } from "../models/roomInterfaces";
 
 const baseUrl = 'http://localhost:5000/api/customer';
 
