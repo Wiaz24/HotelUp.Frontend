@@ -25,9 +25,8 @@ RUN npm run build
 FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY /docker-entrypoint.sh /docker-entrypoint.sh
-
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY /docker-entrypoint.sh /docker-entrypoint.sh
 
 EXPOSE 5173
 
