@@ -1,6 +1,7 @@
+import { AppConfig } from "../../../config";
 import { CreateRepairTask, RepairTask } from "../models/repairTaskInterfaces";
 
-const baseUrl='http://localhost:5001/api/repair';
+const baseUrl = `${AppConfig.backendUrl}/api/repair`;
 
 export const getRepairTasks = async (token: string): Promise<RepairTask[]> => {
   const url = `${baseUrl}/tasks`;

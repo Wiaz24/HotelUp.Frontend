@@ -1,7 +1,8 @@
+import { AppConfig } from "../../../config";
 import { APIError } from "../../../shared/models/apiTypes";
 import { CleaningTask, CreateCleaningTask, UpdateCleaningTask } from "../models/cleaningTaskInterfaces";
 
-const baseUrl='http://localhost:5004/api/cleaning';
+const baseUrl = `${AppConfig.backendUrl}/api/cleaning`;
 
 export const createCleaningTask = async({ reservationId, realisationDate, roomNumber, token }: CreateCleaningTask): Promise<any> => {
   const url = `${baseUrl}/cleaning-task`;

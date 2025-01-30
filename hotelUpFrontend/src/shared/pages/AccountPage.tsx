@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "react-oidc-context";
 import { useNavigate } from "react-router-dom";
 import './accountPage.css';
+import { AppConfig } from "../../config";
 
 function AccountPage() {
   const auth = useAuth();
@@ -15,7 +16,7 @@ function AccountPage() {
 
   const signOutRedirect = () => {
     auth.removeUser();
-    window.location.href = `${import.meta.env.VITE_COGNITO_DOMAIN}/logout?client_id=${import.meta.env.VITE_COGNITO_CLIENT}&logout_uri=${encodeURIComponent(import.meta.env.VITE_LOGOUT_URI)}`;
+    window.location.href = `${AppConfig.cognitoDomain}/logout?client_id=${AppConfig.cognitoClient}&logout_uri=${encodeURIComponent(AppConfig.logoutUri)}`;
   };
 
   const userGroups: string[] = Array.isArray(auth.user?.profile['cognito:groups']) 

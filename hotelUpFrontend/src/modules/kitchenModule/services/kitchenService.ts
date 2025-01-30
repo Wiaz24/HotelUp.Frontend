@@ -1,6 +1,7 @@
+import { AppConfig } from "../../../config";
 import { Menu, PublishMenu } from "../models/menuInterfaces";
 
-const baseUrl = 'http://localhost:5006/api/kitchen';
+const baseUrl = `${AppConfig.backendUrl}/api/kitchen`;
 
 export const getCookMenus = async (token: string): Promise<Menu[]> => {
   const url = `${baseUrl}/menu`;

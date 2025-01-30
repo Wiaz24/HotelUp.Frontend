@@ -4,11 +4,12 @@ import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider, AuthProviderProps } from 'react-oidc-context'
+import { AppConfig } from './config.ts'
 
 const cognitoAuthConfig: AuthProviderProps = {
-  authority: import.meta.env.VITE_COGNITO_AUTHORITY, // Cognito domain
-  client_id: import.meta.env.VITE_COGNITO_CLIENT,
-  redirect_uri: import.meta.env.VITE_REDIRECT_URI,
+  authority: AppConfig.cognitoAuthority,
+  client_id: AppConfig.cognitoClient,
+  redirect_uri: AppConfig.redirectUri,
   response_type: "code",
   scope: "email openid phone",
 };

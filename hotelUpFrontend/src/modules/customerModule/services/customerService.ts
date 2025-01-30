@@ -1,8 +1,9 @@
+import { AppConfig } from "../../../config";
 import { APIError, APIResponse } from "../../../shared/models/apiTypes";
 import { CreatedReservationData, ReservationData } from "../models/reservationInterfaces";
 import { Room } from "../models/roomInterfaces";
 
-const baseUrl = 'http://localhost:5000/api/customer';
+const baseUrl = `${AppConfig.backendUrl}/api/customer`;
 
 export const getFreeRooms = async (startDate?: string, endDate?: string, roomType?: string, capacity?: number | null): Promise<Room[]> => {
   let url = `${baseUrl}/queries/get-free-rooms/`;

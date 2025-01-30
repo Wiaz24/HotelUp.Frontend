@@ -1,6 +1,7 @@
+import { AppConfig } from "../../../config";
 import { HotelEvent, PlannedDish, RoomInformation } from "../models/informationInterfaces";
 
-const baseUrl = 'http://localhost:5003/api/information'
+const baseUrl = `${AppConfig.backendUrl}/api/information`;
 
 export const getPlannedDishes = async (): Promise<PlannedDish[]> => {
   const url = `${baseUrl}/planned-dish`;
