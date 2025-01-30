@@ -10,12 +10,12 @@ echo "COGNITO_DOMAIN='$COGNITO_DOMAIN'"
 echo "LOGOUT_URI='$LOGOUT_URI'"
 echo "BACKEND_URL='$BACKEND_URL'"
 
-perl -pi -e "s|COGNITO_AUTHORITY|$COGNITO_AUTHORITY|g" /usr/share/nginx/html/index*.js
-perl -pi -e "s|COGNITO_CLIENT|$COGNITO_CLIENT|g" /usr/share/nginx/html/index*.js
-perl -pi -e "s|REDIRECT_URI|$REDIRECT_URI|g" /usr/share/nginx/html/index*.js
-perl -pi -e "s|COGNITO_DOMAIN|$COGNITO_DOMAIN|g" /usr/share/nginx/html/index*.js
-perl -pi -e "s|LOGOUT_URI|$LOGOUT_URI|g" /usr/share/nginx/html/index*.js
-perl -pi -e "s|BACKEND_URL|$BACKEND_URL|g" /usr/share/nginx/html/index*.js
+perl -pi -e "s|COGNITO_AUTHORITY|$COGNITO_AUTHORITY|g" /usr/share/nginx/html/assets/index*.js
+perl -pi -e "s|COGNITO_CLIENT|$COGNITO_CLIENT|g" /usr/share/nginx/html/assets/index*.js
+perl -pi -e "s|REDIRECT_URI|$REDIRECT_URI|g" /usr/share/nginx/html/assets/index*.js
+perl -pi -e "s|COGNITO_DOMAIN|$COGNITO_DOMAIN|g" /usr/share/nginx/html/assets/index*.js
+perl -pi -e "s|LOGOUT_URI|$LOGOUT_URI|g" /usr/share/nginx/html/assets/index*.js
+perl -pi -e "s|BACKEND_URL|$BACKEND_URL|g" /usr/share/nginx/html/assets/index*.js
 
 
 entrypoint_log() {
