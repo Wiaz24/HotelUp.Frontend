@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: frontend-deployment
+    labels:
+        app: hotelup
+    namespace: hotelup
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: frontend
+    template:
+        metadata:
+            name: frontend
+            labels:
+                app: frontend
+        spec:
+            containers:
+              - name: frontend
+                image: akopij70/hotelup.frontend:latest
+                imagePullPolicy: Always
+                env:
+                  - name: COGNITO_AUTHORITY
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: COGNITO_AUTHORITY
+                  - name: COGNITO_CLIENT
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: COGNITO_CLIENT
+                  - name: REDIRECT_URI
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: REDIRECT_URI
+                  - name: COGNITO_DOMAIN
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: COGNITO_DOMAIN
+                  - name: LOGOUT_URI
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: LOGOUT_URI
+                  - name: BACKEND_URL
+                    valueFrom:
+                        secretKeyRef:
+                            name: frontend-secret
+                            key: BACKEND_URL
+                ports:
+                  - containerPort: 5173
+                    protocol: TCP
+            restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: frontend-service
+    labels:
+        app: frontend
+    namespace: hotelup
+spec:
+    selector:
+        app: frontend
+    ports:
+      - protocol: TCP
+        port: 5173
+        targetPort: 5173
+    type: ClusterIP
