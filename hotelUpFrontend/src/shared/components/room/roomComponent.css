@@ -63,8 +63,8 @@
         flex: 1;
     }
 
-    .description {
-        gap: 0.5em;
+    .description div {
+        font-size: 0.8em;
     }
 
 }

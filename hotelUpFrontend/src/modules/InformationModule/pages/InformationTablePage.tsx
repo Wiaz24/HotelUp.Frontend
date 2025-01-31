@@ -35,7 +35,7 @@ function InformationTablePage() {
 
     const timeout = setTimeout(() => {
       handleNext();
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timeout);
   }, [hotelEvents, plannedDishes, availableRooms, currentDataset, currentIndex]);

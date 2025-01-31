@@ -81,7 +81,7 @@ function CreateRepairTaskPage() {
   }
 
   return ( <div className="add-task-page"> 
-    <h3>Zamówienie sprzątania pokoju</h3>
+    <h3>Zamówienie serwisu naprawczego</h3>
     <form className="add-task-form" onSubmit={handleSubmit}>
       <div className="choice-element">
         <label htmlFor="title">Nazwa usterki:</label>

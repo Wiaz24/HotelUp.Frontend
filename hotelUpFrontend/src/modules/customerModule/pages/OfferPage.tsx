@@ -128,11 +128,11 @@ function OfferPage() {
         <RoomComponent key={room.id} room={room} startDate={startDate} endDate={endDate} roomStatus={RoomStatus.AVAILABLE}></RoomComponent>
       ))}
     </div>
-    <p>
+    {/* <p>
       Wybrany zakres: {startDate || '---'} do {endDate || '---'}
     </p>
     <p>Typ pokoju: {roomType !== null ? roomType : 'Nieokreślona'}</p>
-    <p>Wybrana pojemność: {capacity !== null ? capacity : 'Nieokreślona'}</p>
+    <p>Wybrana pojemność: {capacity !== null ? capacity : 'Nieokreślona'}</p> */}
   </div>);
 }
 
